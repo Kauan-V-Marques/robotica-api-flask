@@ -1,0 +1,37 @@
+[project]
+name = "robotica-api"
+version = "1.0.0"
+description = "API de competicoes de robotica: robos, eventos, partidas, tomadas de tempo e ranking (Flask + MongoDB)"
+requires-python = ">=3.11"
+dependencies = [
+    "flask>=3.1,<4",
+    "flask-cors>=5,<7",
+    "pymongo>=4.10,<5",
+    "pydantic>=2.9,<3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8,<9",
+    "ruff>=0.8",
+]
+server = [
+    "gunicorn>=23,<24",
+]
+
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["robotica*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
